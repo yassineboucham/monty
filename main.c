@@ -29,10 +29,10 @@ int main(int argc, char **argv)
 		return (0);
 	while (getline(&str, &len, file) != -1)
 	{
-		func = strtok(str, " ");
+		func = strtok(str, " \n\t");
 	if (func != NULL)
 	{
-	s = strtok(NULL, " ");
+	s = strtok(NULL, " \n\t");
 	if (s)
 	nb = atoi(s);
 	i = 0;
