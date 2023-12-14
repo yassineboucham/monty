@@ -11,7 +11,7 @@ int main(int argc, char **argv)
 	size_t len = 0;
 	char *str, *func, *s;
 	unsigned int nb, i = 0, opcode_not_found = 0, j = 0;
-	stack_t *stack = NULL;
+	stack_t **stack = NULL;
 	instruction_t list[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint}, {NULL, NULL} };
 
@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 			while (list[i].opcode)
 			{
 				if (strcmp(func, list[i].opcode) == 0)
-					opcode_not_found = 1, list[i].f(&stack, nb);
+					opcode_not_found = 1, list[i].f(stack, nb);
 				i++;
 			}
 			if (opcode_not_found == 0)
@@ -44,7 +44,6 @@ int main(int argc, char **argv)
 			} opcode_not_found = 0;
 		}
 	}
-	free(stack);
-	fclose(file);
+	free_for_free(*stack), fclose(file);
 	return (0);
 }

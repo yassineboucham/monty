@@ -36,6 +36,7 @@ typedef struct instruction_s
 
 		void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+void free_for_free(stack_t *head);
 void pall(stack_t **stack, unsigned int nb);
 void push(stack_t **stack, unsigned int nb);
 void pint(stack_t **stack, unsigned int nb);
