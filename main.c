@@ -44,6 +44,7 @@ int main(int argc, char **argv)
 			} opcode_not_found = 0;
 		}
 	}
+	free(stack);
 	fclose(file);
 	return (0);
 }
