@@ -20,16 +20,17 @@ int main(int argc, char **argv)
 		fputs("USAGE: monty file\n", stdout), exit(EXIT_FAILURE);
 	file = fopen(argv[1], "r");
 	if (!file)
+	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]), exit(EXIT_FAILURE);
+		fclose(file);
+	}
 	while (getline(&str, &len, file) != -1)
 	{
 		func = strtok(str, " \n\t"), curr_line++;
 		if (func != NULL)
-		{
-			data = strtok(NULL, " \n\t");
+		{ data = strtok(NULL, " \n\t");
 			if (is_digit(data) == -1 && strcmp(func, "push") == 0)
-			{
-			printf("L%d: usage: push integer\n", curr_line);
+			{ printf("L%d: usage: push integer\n", curr_line);
 		    koulchi_free(stack, str, file), exit(EXIT_FAILURE);
 			} i = 0;
 			while (list[i].opcode)
@@ -39,9 +40,8 @@ int main(int argc, char **argv)
 				i++;
 			}
 			if (opcode_not_found == 0)
-			{
-				fprintf(stderr, "L%d: %s %s\n", curr_line, "unknown instruction", func);
-				koulchi_free(stack, str, file), exit(EXIT_FAILURE);
+			{fprintf(stderr, "L%d: %s %s\n", curr_line, "unknown instruction", func);
+			koulchi_free(stack, str, file), exit(EXIT_FAILURE);
 			} opcode_not_found = 0;
 		}
 	} koulchi_free(stack, str, file);

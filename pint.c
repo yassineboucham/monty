@@ -1,15 +1,21 @@
 #include "monty.h"
 /**
- * pint - prints the value at the top of the stack, followed by a new line
- * @stack: lists
- * @nb: unsigned int
+* pint - prints the value at the top of the stack, followed by a new line
+* @stack: lists
+* @nb: unsigned int
 */
 void pint(stack_t **stack, unsigned int nb)
 {
-	if (!*stack)
+	stack_t *head = *stack;
+
+	if (!head)
 	{
 		printf("L<%d>: can't pint, stack empty\n", nb);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", (*stack)->n);
+	while (head->next)
+	{
+		head = head->next;
+	}
+	printf("%d\n", head->n);
 }
