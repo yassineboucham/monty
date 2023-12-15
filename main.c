@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 		if (func != NULL)
 		{
 			data = strtok(NULL, " \n\t");
-			if (is_digit(data) == -1)
+			if (is_digit(data) == -1 && strcmp(func, "push") == 0)
 			{
 			printf("L%d: usage: push integer\n", curr_line);
 		    koulchi_free(stack, str, file), exit(EXIT_FAILURE);
