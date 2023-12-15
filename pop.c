@@ -11,7 +11,7 @@ void pop(stack_t **stack, unsigned int nb)
 
 	if (!(*stack))
 	{
-		fprintf(stderr, "L%d: can't pop, stack empty\n", nb);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", nb);
 		exit(EXIT_FAILURE);
 	}
 	while (walk->next)
