@@ -1,22 +1,26 @@
 #include "monty.h"
-
+/**
+ * swap - swap
+ * @stack: stack_t
+ * @nb: int
+*/
 void swap(stack_t **stack, unsigned int nb)
 {
-	int element = 0;
+	stack_t *top = *stack;
+	stack_t *s1, *s2;
 
-	stack_t *walk = *stack;
-
-	while (walk->next)
-	{
-		element++;
-		walk = walk->next;
-	}
-	if (element < 2)
+	while (top->next)
+		top = top->next;
+	s1 = top->prev;
+	s2 = top;
+	if (!(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't swap, stack empty\n", nb);
 		exit(EXIT_FAILURE);
 	}
-	walk->prev->next = NULL;
-	walk->prev = walk->prev->prev;
-	walk->next = walk->prev;
+	top->prev->prev->next = top;
+	top->prev = top->prev->prev;
+	top->next = s1;
+	s1->prev = s2;
+	s1->next = NULL;
 }
