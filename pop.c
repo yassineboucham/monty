@@ -11,7 +11,7 @@ void pop(stack_t **stack, unsigned int nb)
 
 	if (!(*stack))
 	{
-		printf("L<%d>: can't pint, stack empty\n", nb);
+		fprintf(stderr, "L%d: can't pop, stack empty\n", nb);
 		exit(EXIT_FAILURE);
 	}
 	while (walk->next)

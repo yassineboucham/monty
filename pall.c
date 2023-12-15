@@ -8,6 +8,12 @@ void pall(stack_t **stack, unsigned int nb)
 {
 	stack_t *current = *stack;
 	(void) nb;
+
+	if (!current)
+	{
+		fprintf(stderr, "L%d: can't pall, stack empty\n", nb);
+		exit(EXIT_FAILURE);
+	}
 	while (current->next)
 	{
 		current = current->next;
