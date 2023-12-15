@@ -8,16 +8,13 @@ void push(stack_t **stack, unsigned int nb)
 {
 	stack_t *walk = *stack;
 	stack_t *node;
+	(void)nb;
 
-	if (is_digit(data) == -1)
-	{
-		printf("L%d: usage: push integer\n", nb);
-		exit(EXIT_FAILURE);
-	}
 	node = malloc(sizeof(stack_t));
 	if (node == NULL)
 	{
 		printf("Error: malloc failed\n");
+		free_for_free(*stack);
 		exit(EXIT_FAILURE);
 	}
 	node->n = atoi(data);

@@ -14,3 +14,13 @@ stack_t *walk;
 		head = walk;
 	}
 }
+/**
+ * koulchi_free - bzaf tl hdra
+ * @stack: stack_t
+ * @str: char
+ * @file: FILE
+*/
+void koulchi_free(stack_t *stack, char *str, FILE *file)
+{
+	free_for_free(stack), free(str), fclose(file);
+}

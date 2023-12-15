@@ -27,7 +27,11 @@ int main(int argc, char **argv)
 		if (func != NULL)
 		{
 			data = strtok(NULL, " \n\t");
-			i = 0;
+			if (is_digit(data) == -1)
+			{
+			printf("L%d: usage: push integer\n", curr_line);
+		    koulchi_free(stack, str, file), exit(EXIT_FAILURE);
+			} i = 0;
 			while (list[i].opcode)
 			{
 				if (strcmp(func, list[i].opcode) == 0)
@@ -40,7 +44,6 @@ int main(int argc, char **argv)
 				exit(EXIT_FAILURE);
 			} opcode_not_found = 0;
 		}
-	}
-	free_for_free(stack), free(str), fclose(file);
+	} koulchi_free(stack, str, file);
 	return (0);
 }
