@@ -41,6 +41,7 @@ void free_for_free(stack_t *head);
 void pall(stack_t **stack, unsigned int nb);
 void push(stack_t **stack, unsigned int nb);
 void pint(stack_t **stack, unsigned int nb);
+void pop(stack_t **stack, unsigned int nb);
 int is_digit(char *number);
 void koulchi_free(stack_t *stack, char *str, FILE *file);
 #endif
