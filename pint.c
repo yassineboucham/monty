@@ -8,7 +8,7 @@ void pint(stack_t **stack, unsigned int nb)
 {
 	if (!*stack)
 	{
-		printf("L<%d>: can't pint, stack empty", nb);
+		printf("L<%d>: can't pint, stack empty\n", nb);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);

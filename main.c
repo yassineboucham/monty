@@ -1,4 +1,5 @@
 #include "monty.h"
+char *data;
 /**
 * main - the main function
 * @argc: int
@@ -8,42 +9,38 @@
 int main(int argc, char **argv)
 {
 	FILE *file;
-	size_t len = 0;
-	char *str, *func, *s;
-	unsigned int nb, i = 0, opcode_not_found = 0, j = 0;
-	stack_t **stack = NULL;
+	size_t len;
+	char *str = NULL, *func;
+	unsigned int i = 0, opcode_not_found = 0, curr_line = 0;
+	stack_t *stack = NULL;
 	instruction_t list[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint}, {NULL, NULL} };
 
 	if (argc != 2)
-		fputs("USAGE: monty file", stdout), exit(EXIT_FAILURE);
+		fputs("USAGE: monty file\n", stdout), exit(EXIT_FAILURE);
 	file = fopen(argv[1], "r");
 	if (!file)
-	{
-		fprintf(stderr, "%s %s\n", "Error: Can't open file ", argv[1]);
-		exit(EXIT_FAILURE);
-	}
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]), exit(EXIT_FAILURE);
 	while (getline(&str, &len, file) != -1)
 	{
-		func = strtok(str, " \n\t"), j++;
+		func = strtok(str, " \n\t"), curr_line++;
 		if (func != NULL)
 		{
-			s = strtok(NULL, " \n\t"), i = 0;
-			if (s)
-				nb = atoi(s);
+			data = strtok(NULL, " \n\t");
+			i = 0;
 			while (list[i].opcode)
 			{
 				if (strcmp(func, list[i].opcode) == 0)
-					opcode_not_found = 1, list[i].f(stack, nb);
+					opcode_not_found = 1, list[i].f(&stack, curr_line);
 				i++;
 			}
 			if (opcode_not_found == 0)
 			{
-				fprintf(stderr, "L%d: %s %s\n", j, "unknown instruction", func);
+				fprintf(stderr, "L%d: %s %s\n", curr_line, "unknown instruction", func);
 				exit(EXIT_FAILURE);
 			} opcode_not_found = 0;
 		}
 	}
-	free_for_free(*stack), fclose(file);
+	free_for_free(stack), free(str), fclose(file);
 	return (0);
 }

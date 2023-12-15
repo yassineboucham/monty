@@ -8,7 +8,10 @@ void pall(stack_t **stack, unsigned int nb)
 {
 	stack_t *current = *stack;
 	(void) nb;
-
+	while (current->next)
+	{
+		current = current->next;
+	}
 	while (current != NULL)
 	{
 		printf("%d\n", current->n);

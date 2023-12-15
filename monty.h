@@ -5,6 +5,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include <string.h>
+extern char *data;
 /**
 * struct stack_s - doubly linked list representation of a stack (or queue)
 * @n: integer
@@ -40,4 +41,5 @@ void free_for_free(stack_t *head);
 void pall(stack_t **stack, unsigned int nb);
 void push(stack_t **stack, unsigned int nb);
 void pint(stack_t **stack, unsigned int nb);
+int is_digit(char *number);
 #endif

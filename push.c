@@ -6,25 +6,29 @@
 */
 void push(stack_t **stack, unsigned int nb)
 {
+	stack_t *walk = *stack;
 	stack_t *node;
 
-	if (!nb)
+	if (is_digit(data) == -1)
 	{
-		printf("L<line_number>: usage: push integer");
+		printf("L%d: usage: push integer\n", nb);
 		exit(EXIT_FAILURE);
 	}
 	node = malloc(sizeof(stack_t));
 	if (node == NULL)
 	{
-		printf("Error: malloc failed");
+		printf("Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	node->prev = *stack;
-	node->n = nb;
+	node->n = atoi(data);
 	node->next = NULL;
-	if (*stack)
+	if (!(*stack))
+		*stack = node;
+	else
 	{
-		(*stack)->next = node;
+		while (walk->next)
+			walk = walk->next;
+		walk->next = node;
 	}
-	*stack = node;
+	node->prev = walk;
 }
