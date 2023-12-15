@@ -1,4 +1,9 @@
 #include "monty.h"
+/**
+* pop - pop
+* @stack: lists
+* @nb: unsigned int
+*/
 void pop(stack_t **stack, unsigned int nb)
 {
 	stack_t *walk = *stack;
