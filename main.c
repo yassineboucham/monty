@@ -41,7 +41,7 @@ int main(int argc, char **argv)
 			if (opcode_not_found == 0)
 			{
 				fprintf(stderr, "L%d: %s %s\n", curr_line, "unknown instruction", func);
-				exit(EXIT_FAILURE);
+				koulchi_free(stack, str, file), exit(EXIT_FAILURE);
 			} opcode_not_found = 0;
 		}
 	} koulchi_free(stack, str, file);
