@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 	stack_t *stack = NULL;
 	instruction_t list[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop}, {"swap", swap},
-		{"add", add}, {NULL, NULL} };
+		{"add", add}, {"sub", sub}, {NULL, NULL} };
 
 	if (argc != 2)
 		fputs("USAGE: monty file\n", stdout), exit(EXIT_FAILURE);
