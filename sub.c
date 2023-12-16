@@ -16,7 +16,7 @@ void sub(stack_t **stack, unsigned int nb)
 	while (and->next)
 		and = and->next;
 	sub = malloc(sizeof(stack_t));
-	sub->n = and->n - and->prev->n;
+	sub->n = and->prev->n - and->n;
 	sub->next = NULL;
 	sub->prev = and->prev->prev;
 	and->prev->prev->next = sub;
