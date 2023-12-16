@@ -46,6 +46,7 @@ void swap(stack_t **stack, unsigned int nb);
 void add(stack_t **stack, unsigned int nb);
 void nop(stack_t **stack, unsigned int nb);
 void sub(stack_t **stack, unsigned int nb);
+void mul(stack_t **stack, unsigned int nb);
 int is_digit(char *number);
 void koulchi_free(stack_t *stack, char *str, FILE *file);
 #endif
