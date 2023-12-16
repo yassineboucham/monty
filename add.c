@@ -1,5 +1,9 @@
 #include "monty.h"
-
+/**
+ * add - adds the top two elements of the stack.
+ * @stack: stack_t
+ * @nb: int
+*/
 void add(stack_t **stack, unsigned int nb)
 {
 	stack_t *add, *and = *stack;
